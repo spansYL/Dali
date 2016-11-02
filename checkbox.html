@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <title>jquery全选</title>
+</head>
+<body>
+    <label><input type="checkbox" name="myFruit" value="1" id="myFruitAll">全选</label>
+    <label><input type="checkbox" name="myFruit" value="2">苹果</label>
+    <label><input type="checkbox" name="myFruit" value="3">香蕉</label>
+    <label><input type="checkbox" name="myFruit" value="4">梨子</label>
+    <label><input type="checkbox" name="myFruit" value="5">菠萝</label>
+</body>
+<script>
+    $('input[name=myFruit]').click(function(){
+        var id = $(this).prop('id');
+        var nAll = $('input[name=myFruit]').length;
+        var nChecked = $('input[name=myFruit]:checked').length;
+        //点击全选按钮
+        if( id == 'myFruitAll'){
+            if($(this).is(':checked')){
+                $('input[name=myFruit]').prop('checked',true);
+            }else{
+                $('input[name=myFruit]').removeAttr('checked');
+            }
+        }else{
+            //点击普通按钮
+            if($(this).is(':checked')){
+                if(nChecked >= nAll -1){
+                    $('#myFruitAll').prop('checked',true);
+                }
+            }else {
+                $('#myFruitAll').removeAttr('checked');
+            }
+        }
+    });  
+</script>
+</html>
