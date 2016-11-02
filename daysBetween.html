@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+     <script>
+         var days = daysBetween('2016-11-01','2016-11-02');
+         /**
+          * 根据两个日期，判断相差天数
+          * @param sDate1 开始日期 如：2016-11-01
+          * @param sDate2 结束日期 如：2016-11-02
+          * @returns {number} 返回相差天数
+          */
+         function daysBetween(sDate1,sDate2){
+             //Date.parse() 解析一个日期时间字符串，并返回1970/1/1 午夜距离该日期时间的毫秒数
+             var time1 = Date.parse(new Date(sDate1));
+             var time2 = Date.parse(new Date(sDate2));
+             var nDays = Math.abs(parseInt((time2 - time1)/1000/3600/24));
+             return  nDays;
+         };
+
+     </script>
+</body>
+</html>
