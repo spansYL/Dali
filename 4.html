@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="//libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+     <div id="demo">jjjjj</div>
+    <script>
+        function demo(num,n){
+            var num = parseFloat(num).toFixed(n);
+            var _num = String(num);
+            var _num = _num.replace(/^(\d+)((\.\d+)?)$/, function (s, s1, s2) {
+                return s1.replace(/\d{1,3}(?=(\d{3})+$)/g, "$&,") + s2;
+            });
+            return _num;
+        }
+        function formatThousands(num,n){
+            if(n == undefined){
+                n = 0;
+            }
+            var num = parseFloat(num).toFixed(n).toString();
+            var integer = num.slice(0,num.length - n);
+            var decimal= num.slice(num.length -n);
+
+            var result = '';
+            while(integer.length > 3){
+                result = ',' + integer.slice(-3) + result;
+                integer = integer.slice(0,integer.length - 3);
+            }
+            result = integer + result + decimal;
+
+            /*var num = parseFloat(num).toFixed(n);
+             var _num = String(num);
+             var _num = _num.replace(/^(\d+)((\.\d+)?)$/, function (s, s1, s2) {
+             return s1.replace(/\d{1,3}(?=(\d{3})+$)/g, "$&,") + s2;
+             });*/
+            return result;
+        }
+    </script>
+</body>
+</html>
